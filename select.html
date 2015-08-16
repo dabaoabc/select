@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+</head>
+<body>
+	<input type="checkbox"  id="selectAll" />全选<br/>
+	<input type="checkbox"  id="oppose" />反选<br/>
+	<div id="box">
+		<input type="checkbox" name="r" />1 <input type="checkbox" name="r"/>2 <input type="checkbox" name="r"/>3 <input type="checkbox" name="r"/>4 <input type="checkbox" name="r"/>5
+	</div>
+	<script type="text/javascript">
+		var r = document.getElementsByName('r'),
+		selectAll = document.querySelector("#selectAll"),
+		oppose = document.querySelector("#oppose"),
+		box = document.querySelector("#box");
+		selectAll.addEventListener("click",function(){
+			var total = 1;
+			for(var i = 0;i < r.length;i++){
+				total *= r[i].checked;
+			}
+			for(var i = 0;i < r.length;i++){
+				if (total) {
+					r[i].checked = 0;
+				}else{
+					r[i].checked = 1;
+				}
+			}
+		},false) 
+		oppose.addEventListener("click",function(){
+			for(var i = 0;i < r.length;i++){
+				if (r[i].checked) {
+					r[i].checked = 0;
+				}else{
+					r[i].checked = 1;
+				}
+			}
+		},false)
+		box.addEventListener("click",function(){
+			var ev = ev || window.event;
+			var target = ev.target || ev.srcElement;
+			if(target.nodeName.toLowerCase() == "input"){
+				var total = 1;
+				for(var i = 0;i < r.length;i++){
+					total *= r[i].checked;
+				}
+				for(var j = 0;j < r.length;j++){
+					if (total) {
+						selectAll.checked = 1;
+					}else{
+						selectAll.checked = 0;
+					}
+			}
+			}
+		});		
+
+	</script>
+</body>
+</html>
