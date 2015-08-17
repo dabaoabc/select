@@ -37,12 +37,17 @@
 					r[i].checked = 1;
 				}
 			}
+			getTotal();
 		},false)
 		box.addEventListener("click",function(){
 			var ev = ev || window.event;
 			var target = ev.target || ev.srcElement;
 			if(target.nodeName.toLowerCase() == "input"){
-				var total = 1;
+				getTotal();
+			}
+		});		
+		function getTotal(){
+			var total = 1;
 				for(var i = 0;i < r.length;i++){
 					total *= r[i].checked;
 				}
@@ -53,9 +58,7 @@
 						selectAll.checked = 0;
 					}
 			}
-			}
-		});		
-
+		}
 	</script>
 </body>
 </html>
